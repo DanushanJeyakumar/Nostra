@@ -1,0 +1,198 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nostra - Full Slider</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .slider-track {
+      transition: transform 0.5s ease-in-out;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+<body class="class="bg-gray-100 scroll-smooth">
+
+  <!-- Offer Banner -->
+  <div id="offerBanner" class="bg-gray-800 text-white py-4 px-6 flex items-center justify-center relative">
+    <p class="text-lg sm:text-xl text-center">
+      Sign Up and <span class="font-bold text-white">GET 20% OFF</span> for your first Order
+    </p>
+    <button onclick="document.getElementById('offerBanner').style.display='none'"
+      class="absolute right-4 text-2xl top-1/2 -translate-y-1/2 hover:text-red-400 transition duration-200">
+      &times;
+    </button>
+  </div>
+
+<!-- Navbar -->
+<nav class="bg-white shadow-md py-4 sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 flex items-center justify-between">
+    
+    <!-- Logo -->
+  <a href="index.html" class="text-3xl font-bold text-gray-800">Nostra</a>
+
+    
+    <!-- Desktop Menu -->
+    <div class="hidden md:flex space-x-6 text-base font-medium">
+      <a href="index.html" class="text-gray-800 hover:text-blue-600">Home</a>
+      <a href="#new-arrivals" class="text-gray-800 hover:text-blue-600">New Arrival</a>
+      <a href="#most-wanted" class="text-gray-800 hover:text-blue-600">Most Wanted</a>
+      <a href="/collections.html" class="text-gray-800 hover:text-blue-600">Collections</a>
+      <a href="/contactus.html" class="text-gray-800 hover:text-blue-600">Contact Us</a>
+    </div>
+
+    <!-- Mobile Icon -->
+    <div class="md:hidden">
+      <button onclick="toggleMobileMenu()">
+        <i class="fa-solid fa-bars text-2xl text-gray-800"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="fixed top-0 left-0 w-full h-full bg-white transform translate-x-full transition duration-300 z-50">
+    <div class="flex justify-between items-center p-4 border-b">
+      <div class="text-2xl font-bold text-gray-800">Nostra</div>
+      <button onclick="toggleMobileMenu()">
+        <i class="fa-solid fa-xmark text-3xl text-gray-800"></i>
+      </button>
+    </div>
+    <ul class="flex flex-col space-y-6 p-6 text-lg font-medium text-gray-700">
+      <li><a href="/index.html" onclick="toggleMobileMenu()">Home</a></li>
+      <li><a href="#new-arrivals" onclick="toggleMobileMenu()">New Arrival</a></li>
+      <li><a href="#most-wanted" onclick="toggleMobileMenu()">Most Wanted</a></li>
+      <li><a href="/collections.html" onclick="toggleMobileMenu()">Collections</a></li>
+      <li><a href="/contactus.html" onclick="toggleMobileMenu()">Contact Us</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Search Bar -->
+<div class="max-w-7xl mx-auto px-4 py-8">
+  <input type="text" placeholder="Search collections..." class="w-full px-6 py-4 border rounded-full shadow focus:outline-none focus:ring-2 focus:ring-gray-800">
+</div>
+
+<!-- Main Content -->
+<div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row gap-8 pb-20">
+
+  <!-- Filters (sticky only on desktop) -->
+<aside class="md:w-1/4 w-full space-y-8 md:sticky md:top-10 md:self-start">
+
+    <div class="bg-gray-100 p-6 rounded-lg shadow">
+      <h3 class="text-3xl font-bold mb-4">Occasion</h3>
+      <ul class="space-y-2 text-lg">
+        <li><input type="checkbox" id="summer" /> <label for="summer">Summer</label></li>
+        <li><input type="checkbox" id="party" /> <label for="party">Party</label></li>
+        <li><input type="checkbox" id="beach" /> <label for="beach">Beach</label></li>
+      </ul>
+    </div>
+
+    <div class="bg-gray-100 p-6 rounded-lg shadow">
+      <h3 class="text-3xl font-bold mb-4">Colors</h3>
+      <ul class="space-y-2 text-lg">
+        <li><input type="checkbox" id="red" /> <label for="red">Red</label></li>
+        <li><input type="checkbox" id="blue" /> <label for="blue">Blue</label></li>
+        <li><input type="checkbox" id="white" /> <label for="white">White</label></li>
+        <li><input type="checkbox" id="green" /> <label for="green">Green</label></li>
+      </ul>
+    </div>
+
+    <div class="bg-gray-100 p-6 rounded-lg shadow">
+      <h3 class="text-3xl font-bold mb-4">Arrivals</h3>
+      <ul class="space-y-2 text-lg">
+        <li><input type="checkbox" id="new" /> <label for="new">New</label></li>
+        <li><input type="checkbox" id="old" /> <label for="old">Old</label></li>
+      </ul>
+    </div>
+  </aside>
+
+    <!-- Product Section -->
+    <main class="w-full md:w-3/4">
+
+      <!-- Product Grid -->
+      <div id="productContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- JS will inject products here -->
+      </div>
+    </main>
+  </div>
+
+  <!-- Newsletter -->
+<section class="bg-gray-100 py-20 px-4">
+  <div class="max-w-3xl mx-auto text-center">
+    <h2 class="text-4xl font-bold mb-4 text-gray-900 tracking-tight">Stay in the Loop</h2>
+    <p class="text-lg text-gray-600 mb-8">
+      Get the latest trends, updates, and exclusive offers straight to your inbox.
+    </p>
+    <form class="flex flex-col sm:flex-row items-center gap-4">
+      <input
+        type="email"
+        placeholder="Enter your email"
+        class="w-full sm:flex-1 px-6 py-3 border border-gray-400 rounded-full focus:outline-none focus:ring-2 focus:ring-gray-900 transition"
+      />
+      <button
+        type="submit"
+        class="bg-gray-800 text-white px-8 py-3 rounded-full text-lg font-medium hover:bg-gray-800 transition"
+      >
+        Subscribe
+      </button>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-12 px-6">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+    
+    <!-- Brand -->
+    <div>
+      <h2 class="text-2xl font-bold mb-4">Nostra</h2>
+      <p class="text-gray-400 text-sm leading-relaxed">
+        Discover your style. Modern fashion delivered with elegance & simplicity.
+      </p>
+    </div>
+
+    <!-- Shop -->
+    <div>
+      <h3 class="text-lg font-semibold mb-3">Shop</h3>
+      <ul class="space-y-2 text-sm text-gray-400">
+        <li><a href="#">Men</a></li>
+        <li><a href="#">Women</a></li>
+        <li><a href="#">New Arrivals</a></li>
+        <li><a href="#">Collections</a></li>
+      </ul>
+    </div>
+
+    <!-- Support -->
+    <div>
+      <h3 class="text-lg font-semibold mb-3">Support</h3>
+      <ul class="space-y-2 text-sm text-gray-400">
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Shipping Info</a></li>
+        <li><a href="#">Returns</a></li>
+        <li><a href="#">FAQs</a></li>
+      </ul>
+    </div>
+
+    <!-- Follow -->
+    <div>
+      <h3 class="text-lg font-semibold mb-3">Follow Us</h3>
+      <div class="flex space-x-4">
+        <a href="#" class="hover:text-gray-200 text-xl"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="hover:text-gray-200 text-xl"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="hover:text-gray-200 text-xl"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="hover:text-gray-200 text-xl"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-10 border-t border-gray-700 pt-6 text-sm text-gray-500 text-center">
+    &copy; 2025 Nostra. All rights reserved.
+  </div>
+</footer>
+
+  <script src="collections.js"></script>
+</body>
+</html>
